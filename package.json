@@ -4,11 +4,16 @@
   "description": "Command line JSON parser, processor",
   "main": "index.js",
   "scripts": {
-    "test": "echo lol"
+    "test": "`npm bin`/eslint index.js"
   },
   "author": "Brandon Wood",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }
