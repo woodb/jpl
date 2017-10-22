@@ -7,7 +7,7 @@
     "test": "`npm bin`/eslint index.js"
   },
   "bin": {
-    "jpl": "./index.js"
+    "jpl": "./bin/index.js"
   },
   "author": "Brandon Wood",
   "repository": "https://github.com/woodb/jpl.git",

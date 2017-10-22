@@ -1,6 +1,4 @@
-#!/usr/bin/env node
 const readline = require("readline");
-const cli = require("commander");
 
 
 /* Default function if no code is specified in the command line */
@@ -11,15 +9,12 @@ const defaultFn = obj => obj;
  * Process input stream, aggregating into a single string, then parse and
  * process
  */
-const processJson = fn => {
+const processJson = (fn = defaultFn) => {
   const raw = [];
   readline
-    .createInterface({
-      input: process.stdin,
-    })
+    .createInterface({ input: process.stdin })
     .on("line", line => raw.push(line))
     .on("close", () => {
-      // Try to parse the JSON
       try {
         const parsedJson = JSON.parse(raw.join(""));
         const rv = fn(parsedJson);
@@ -33,14 +28,6 @@ const processJson = fn => {
 };
 
 
-/* Process command line arguments */
-cli
-  .version("0.0.2")
-  .option("-c, --code <code>", "Function to execute to parse JSON");
-cli.parse(process.argv);
-
-
-/* Create stdin stream processor and execute */
-const { code } = cli;
-const fn = code ? eval(code) : defaultFn;
-processJson(fn);
+module.exports = {
+  processJson,
+};
