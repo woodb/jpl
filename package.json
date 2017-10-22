@@ -6,6 +6,9 @@
   "scripts": {
     "test": "`npm bin`/eslint index.js"
   },
+  "bin": {
+    "jpl": "./index.js"
+  },
   "author": "Brandon Wood",
   "license": "MIT",
   "dependencies": {
