@@ -35,7 +35,7 @@ const processJson = fn => {
 
 /* Process command line arguments */
 cli
-  .version("0.0.1")
+  .version("0.0.2")
   .option("-c, --code <code>", "Function to execute to parse JSON");
 cli.parse(process.argv);
 
