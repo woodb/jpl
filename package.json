@@ -1,0 +1,14 @@
+{
+  "name": "jpl",
+  "version": "0.0.1",
+  "description": "Command line JSON parser, processor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo lol"
+  },
+  "author": "Brandon Wood",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.11.0"
+  }
+}
