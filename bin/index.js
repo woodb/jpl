@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 const cli = require("commander");
 const { main } = require("./main");
+const { version } = require("../package.json");
 
 /* Process command line arguments */
 cli
-  .version("0.1.0-alpha.0")
+  .version(version)
   .option("-c, --code <code>", "Function to execute to parse JSON");
 cli.parse(process.argv);
 
