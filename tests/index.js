@@ -4,6 +4,7 @@ const fs = require("fs");
 const { processJsonBuffer } = require("../src");
 const { main } = require("../bin/main");
 
+const VALID_JSON_OBJECT = require("./data/valid.json");
 
 test("processJsonBuffer is a function", t => {
   t.is(typeof processJsonBuffer, "function");
@@ -17,19 +18,17 @@ test("processJsonBuffer returns a Promise", async t => {
 
 
 test("processJsonBuffer returns unmodified object", async t => {
-  const testInput = require("./data/valid.json");
   const fh = fs.createReadStream("tests/data/valid.json");
   const rv = await processJsonBuffer({ buffer: fh });
-  t.deepEqual(rv, testInput);
+  t.deepEqual(rv, VALID_JSON_OBJECT);
 });
 
 
 test("processJsonBuffer modifies an object", async t => {
-  const testInput = require("./data/valid.json");
   const fh = fs.createReadStream("tests/data/valid.json");
   const fn = ({ foo }) => ({ foo });
   const rv = await processJsonBuffer({ buffer: fh, fn });
-  t.deepEqual(rv, fn(testInput));
+  t.deepEqual(rv, fn(VALID_JSON_OBJECT));
 });
 
 
@@ -64,18 +63,16 @@ test("throws on code evaluating to anything but a function", async t => {
 
 
 test("returns unmodified object", async t => {
-  const testInput = require("./data/valid.json");
   const fh = fs.createReadStream("tests/data/valid.json");
   const rv = await main({}, fh);
-  t.is(rv, JSON.stringify(testInput, null, 2));
+  t.is(rv, JSON.stringify(VALID_JSON_OBJECT, null, 2));
 });
 
 
 test("modifies an object", async t => {
-  const testInput = require("./data/valid.json");
   const fh = fs.createReadStream("tests/data/valid.json");
   const fn = ({ foo }) => ({ foo });
-  const rv = await main({code: "({ foo }) => ({ foo })" }, fh);
-  t.is(rv, JSON.stringify(fn(testInput), null, 2));
+  const rv = await main({ code: "({ foo }) => ({ foo })" }, fh);
+  t.is(rv, JSON.stringify(fn(VALID_JSON_OBJECT), null, 2));
 });
 
