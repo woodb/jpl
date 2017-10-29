@@ -3,6 +3,8 @@ Command line JSON parser, processor
 
 
 ## Installation
+Note: `jpl` requires requires Node.js v8.0.0 or later.
+
 `npm install -g jpl`
 
 

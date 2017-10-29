@@ -1,13 +1,18 @@
 {
   "name": "jpl",
-  "version": "0.0.2",
+  "version": "0.1.0-beta",
   "description": "Command line JSON parser, processor",
   "main": "index.js",
   "scripts": {
-    "test": "`npm bin`/eslint index.js"
+    "pretest": "`npm bin`/eslint src/ bin/ tests/",
+    "test": "`npm bin`/nyc `npm bin`/ava tests/",
+    "test:cov": "`npm bin`/nyc report --reporter=html `npm bin`/ava tests/"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "bin": {
-    "jpl": "./index.js"
+    "jpl": "./bin/index.js"
   },
   "author": "Brandon Wood",
   "repository": "https://github.com/woodb/jpl.git",
@@ -16,8 +21,10 @@
     "commander": "^2.11.0"
   },
   "devDependencies": {
+    "ava": "^0.22.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "nyc": "^11.2.1"
   }
 }
