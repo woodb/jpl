@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - deps-{{ arch }}-{{ checksum "package.json" }}
+          - deps-{{ arch }}-
+          - deps-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: deps-{{ arch }}-{{ checksum "package.json" }}
+      - run: npm test
+      - run: cat tests/data/valid.json | ./bin/index.js
