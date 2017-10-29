@@ -4,7 +4,9 @@
   "description": "Command line JSON parser, processor",
   "main": "index.js",
   "scripts": {
-    "test": "`npm bin`/eslint src/ bin/ && ava tests/"
+    "pretest": "`npm bin`/eslint src/ bin/ tests/",
+    "test": "`npm bin`/nyc `npm bin`/ava tests/",
+    "test:cov": "`npm bin`/nyc report --reporter=html `npm bin`/ava tests/"
   },
   "bin": {
     "jpl": "./bin/index.js"
@@ -19,6 +21,7 @@
     "ava": "^0.22.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "nyc": "^11.2.1"
   }
 }
