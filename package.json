@@ -8,6 +8,9 @@
     "test": "`npm bin`/nyc `npm bin`/ava tests/",
     "test:cov": "`npm bin`/nyc report --reporter=html `npm bin`/ava tests/"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "bin": {
     "jpl": "./bin/index.js"
   },
