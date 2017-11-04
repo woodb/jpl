@@ -12,8 +12,9 @@ cli.parse(process.argv);
 
 const run = async () => {
   try {
-    console.log(await main(cli, process.stdin));
-    process.exit(0);
+    const cb = err => (err ? process.exit(1) : process.exit(0));
+    const rv = await main(cli, process.stdin);
+    process.stdout.write(rv, null, cb);
   } catch (err) {
     console.error(err);
     process.exit(1);
