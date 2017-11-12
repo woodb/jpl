@@ -18,13 +18,13 @@
   "repository": "https://github.com/woodb/jpl.git",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.11.0"
+    "commander": "2.11.0"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "nyc": "^11.2.1"
+    "ava": "0.23.0",
+    "eslint": "4.11.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
+    "nyc": "11.3.0"
   }
 }
