@@ -1,5 +1,6 @@
 {
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier"],
   "env": {
     "node": true,
   },
@@ -10,6 +11,7 @@
     "no-eval": 0,
     "no-undefined": 1,
     "no-void": 0,
+    "prettier/prettier": 2,
     "quotes": [2, "double", "avoid-escape"],
   }
 }

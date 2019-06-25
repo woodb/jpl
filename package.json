@@ -4,7 +4,7 @@
   "description": "Command line JSON parser, processor",
   "main": "index.js",
   "scripts": {
-    "format": "npx prettier --write 'src/**/*.js' --write 'tests/**/*.js' --write 'bin/**/*.js'",
+    "format": "npx eslint --fix src/ tests/ bin/",
     "pretest": "`npm bin`/eslint src/ bin/ tests/",
     "test": "`npm bin`/nyc `npm bin`/ava tests/",
     "test:cov": "`npm bin`/nyc report --reporter=html `npm bin`/ava tests/"
@@ -25,7 +25,9 @@
     "ava": "2.1.0",
     "eslint": "6.0.1",
     "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-prettier": "5.1.0",
     "eslint-plugin-import": "2.18.0",
+    "eslint-plugin-prettier": "3.1.0",
     "nyc": "14.1.1",
     "prettier": "1.18.2"
   }
