@@ -1,6 +1,5 @@
 const { processJsonBuffer } = require("../src");
 
-
 /* Create stdin stream processor and execute */
 const main = async (params, buffer) => {
   const { code } = params;
@@ -28,7 +27,6 @@ const main = async (params, buffer) => {
   }
 };
 
-
 module.exports = {
-  main,
+  main
 };

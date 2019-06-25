@@ -1,6 +1,5 @@
 const readline = require("readline");
 
-
 /**
  * Process input stream, aggregating into a single string, then parse and
  * process
@@ -22,7 +21,6 @@ const processJsonBuffer = ({ buffer = process.stdin, fn = obj => obj }) =>
       });
   });
 
-
 module.exports = {
-  processJsonBuffer,
+  processJsonBuffer
 };

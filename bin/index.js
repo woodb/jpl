@@ -9,7 +9,6 @@ cli
   .option("-c, --code <code>", "Function to execute to parse JSON");
 cli.parse(process.argv);
 
-
 const run = async () => {
   try {
     const cb = err => (err ? process.exit(1) : process.exit(0));
