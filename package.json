@@ -4,8 +4,8 @@
   "description": "Command line JSON parser, processor",
   "main": "index.js",
   "scripts": {
-    "format": "npx eslint --fix src/ tests/ bin/",
-    "pretest": "`npm bin`/eslint src/ bin/ tests/",
+    "format": "npx prettier --write src/**/*.js --write tests/**/*.js --write bin/**/*.js && npx eslint --fix src/ tests/ bin/",
+    "pretest": "npm run format",
     "test": "`npm bin`/nyc `npm bin`/ava tests/",
     "test:cov": "`npm bin`/nyc report --reporter=html `npm bin`/ava tests/"
   },
@@ -20,6 +20,9 @@
   "license": "MIT",
   "dependencies": {
     "commander": "2.20.0"
+  },
+  "ava": {
+    "compileEnhancements": false
   },
   "devDependencies": {
     "ava": "2.1.0",

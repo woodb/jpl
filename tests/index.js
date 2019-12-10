@@ -30,27 +30,35 @@ test("processJsonBuffer modifies an object", async t => {
 
 test("processJsonBuffer throws on bad JSON", async t => {
   const fh = fs.createReadStream("tests/data/invalid.json");
-  await t.throws(processJsonBuffer({ buffer: fh }));
+  await t.throwsAsync(() => processJsonBuffer({ buffer: fh }));
 });
 
 test("processJsonBuffer throws on bad function", async t => {
   const fh = fs.createReadStream("tests/data/valid.json");
-  await t.throws(processJsonBuffer({ buffer: fh, fn: obj => obj.not.exist }));
+  await t.throwsAsync(() =>
+    processJsonBuffer({ buffer: fh, fn: obj => obj.not.exist })
+  );
 });
 
 test("throws on bad input code string", async t => {
   const fh = fs.createReadStream("tests/data/valid.json");
-  await t.throws(main({ code: "invalid javascript" }, fh), SyntaxError);
+  await t.throwsAsync(
+    () => main({ code: "invalid javascript" }, fh),
+    SyntaxError
+  );
 });
 
 test("throws on function having multiple parameters", async t => {
   const fh = fs.createReadStream("tests/data/valid.json");
-  await t.throws(main({ code: "(foo, bar) => null" }, fh), /one parameter/);
+  await t.throwsAsync(
+    () => main({ code: "(foo, bar) => null" }, fh),
+    /one parameter/
+  );
 });
 
 test("throws on code evaluating to anything but a function", async t => {
   const fh = fs.createReadStream("tests/data/valid.json");
-  await t.throws(main({ code: "[1, 2, 3]" }, fh), /function/);
+  await t.throwsAsync(() => main({ code: "[1, 2, 3]" }, fh), /function/);
 });
 
 test("returns unmodified object", async t => {
