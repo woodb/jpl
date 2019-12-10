@@ -16,11 +16,3 @@ jobs:
             - node_modules
           key: deps-{{ arch }}-{{ checksum "package.json" }}
       - run: npm test
-      - run: npm run test:cov
-      - run: cat tests/data/valid.json | ./bin/index.js > /tmp/valid-output.json
-      - store_artifacts:
-          path: coverage
-          desination: coverage-report
-      - store_artifacts:
-          path: /tmp/valid-output.json
-          desination: test-output.json
